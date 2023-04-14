@@ -1,0 +1,36 @@
+,Operation,Syntax,Function
+0,Addition,a + b,"add(a, b)"
+1,Concatenation,seq1 + seq2,"concat(seq1, seq2)"
+2,Containment Test,obj in seq,"contains(seq, obj)"
+3,Division,a / b,"truediv(a, b)"
+4,Division,a // b,"floordiv(a, b)"
+5,Bitwise And,a & b,"and_(a, b)"
+6,Bitwise Exclusive Or,a ^ b,"xor(a, b)"
+7,Bitwise Inversion,~ a,invert(a)
+8,Bitwise Or,a | b,"or_(a, b)"
+9,Exponentiation,a ** b,"pow(a, b)"
+10,Identity,a is b,"is_(a, b)"
+11,Identity,a is not b,"is_not(a, b)"
+12,Indexed Assignment,obj[k] = v,"setitem(obj, k, v)"
+13,Indexed Deletion,del obj[k],"delitem(obj, k)"
+14,Indexing,obj[k],"getitem(obj, k)"
+15,Left Shift,a << b,"lshift(a, b)"
+16,Modulo,a % b,"mod(a, b)"
+17,Multiplication,a * b,"mul(a, b)"
+18,Matrix Multiplication,a @ b,"matmul(a, b)"
+19,Negation (Arithmetic),- a,neg(a)
+20,Negation (Logical),not a,not_(a)
+21,Positive,+ a,pos(a)
+22,Right Shift,a >> b,"rshift(a, b)"
+23,Slice Assignment,seq[i:j] = values,"setitem(seq, slice(i, j), values)"
+24,Slice Deletion,del seq[i:j],"delitem(seq, slice(i, j))"
+25,Slicing,seq[i:j],"getitem(seq, slice(i, j))"
+26,String Formatting,s % obj,"mod(s, obj)"
+27,Subtraction,a - b,"sub(a, b)"
+28,Truth Test,obj,truth(obj)
+29,Ordering,a < b,"lt(a, b)"
+30,Ordering,a <= b,"le(a, b)"
+31,Equality,a == b,"eq(a, b)"
+32,Difference,a != b,"ne(a, b)"
+33,Ordering,a >= b,"ge(a, b)"
+34,Ordering,a > b,"gt(a, b)"
