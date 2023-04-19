@@ -38,4 +38,7 @@ def evaluate(state, p):
     return num_eval
 
 if __name__ == "__main__":
-    pass
+    # 식과 인자를 분리
+    p = create_problem('../data/Convex.txt')
+    # 식과 인자를 출력
+    describe_problem(p)
