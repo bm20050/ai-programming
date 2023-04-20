@@ -41,4 +41,15 @@
 - 3) 계산(최단거리)
 ## First Choice
 - 언덕 등반
-- 
+
+
+## 설정
+```shell
+pip install pytest black
+```
+
+## Local Search
+- 언덕 등반 알고리즘(지역)
+- First-Choice 알고리즘(지역(전역)) => TSP => 시각화
+- Steepest => 경사 하강법 => 수식 => 시각화
+- GD => 계산이 빠름(뺄셈) => 수식

@@ -1,44 +1,85 @@
 import random
 
-# 간단한 언덕 등반 알고리즘
-## 1. 파일을 읽어보자!
-## 2. Convex.txt를 사용해서 계산
+
+DELTA = 0.01
+eval_count = 0
+
+
 def create_problem(filename):
-    # 1-1. 파일을 읽자
-    ini_file = open(filename, 'r')
-    # 1-2. 수식과 리스트로 분리
-    expression = ini_file.readline().strip()
+    f = open(filename, "r")
+    expression = f.readline()
+
     var_names = []
     low = []
     up = []
 
-    for line in ini_file.readlines():
-        var_names.append(line.split(',')[0])
-        low.append(float(line.split(',')[1]))
-        up.append(float(line.split(',')[2]))
-    ini_file.close()
+    for line in f.readlines():
+        _temp = line.split(",")
+        var_names.append(_temp[0])
+        low.append(float(_temp[1]))
+        up.append(float(_temp[2]))
     domain = [var_names, low, up]
-    # 1-3. 리턴
     return (expression, domain)
 
+
 def random_init(p):
-    expression, domain = p
+    domain = p[1]
     init = []
     for i in range(0, len(domain[0])):
         init.append(random.uniform(domain[1][i], domain[2][i]))
     return init
 
-def evaluate(state, p):
-    num_eval = 0
-    expression = p[0]
-    var_name = p[1][0]
 
-    for i in range(len(var_name)):
-        assignment = var_name[i] + '=' + str(state[i])
-    return num_eval
+def evaluate(current, p):
+    global eval_count
+    eval_count += 1
+    expr = p[0]
+    var_names = p[1][0]
+    for i in range(len(var_names)):
+        assignment = var_names[i] + "=" + str(current[i])
+        exec(assignment)
+    return eval(expr)
+
+
+def mutate(current, i, d, p):
+    current_copy = current[:]
+    domain = p[1]
+    low = domain[1][i]
+    up = domain[2][i]
+    if low <= (current_copy[i] + d) <= up:
+        current_copy[i] += d
+    return current_copy
+
+
+def coordinate(solution):
+    c = [round(value, 3) for value in solution]
+    return tuple(c)
+
+
+def describe_problem(p):
+    print()
+    print("Objective function:")
+    print(p[0])
+    print("Search space:")
+    var_names = p[1][0]
+    low = p[1][1]
+    up = p[1][2]
+    for i in range(len(low)):
+        print(f"{var_names[i]} : {low[i], up[i]}")
+
+
+def display_result(solution, minimum):
+    print()
+    print("Solution found:")
+    print(coordinate(solution))
+    print(f"Minimum value: {minimum:,.3f}")
+    print()
+    print(f"Total number of evaluations: {eval_count:,}")
+
 
 if __name__ == "__main__":
-    # 식과 인자를 분리
-    p = create_problem('../data/Convex.txt')
-    # 식과 인자를 출력
+    p = create_problem("./data/Convex.txt")
+    solution = random_init(p)
+    minimum = evaluate(solution, p)
     describe_problem(p)
+    display_result(solution, minimum)
