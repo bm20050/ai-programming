@@ -34,7 +34,7 @@ def best_of(neighbors, p):
 
 def display_setting():
     print()
-    print("Search algorithm: Steepest-Ascent Hill Climbing")
+    print("Search algorithms: Steepest-Ascent Hill Climbing")
     print()
     print("Mutation step size:", DELTA)
 

@@ -28,7 +28,7 @@ def random_mutant(current, p):
 
 def display_setting():
     print()
-    print("Search algorithm: First-Choice Hill Climbing")
+    print("Search algorithms: First-Choice Hill Climbing")
     print()
     print("Mutation step size:", DELTA)
 
